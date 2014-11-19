@@ -1,9 +1,23 @@
+"""Program : Number Base Converter
+Name : Natthawee Chutianusornchai
+Language : Python 2.7.8
+"""
+
 class Baseconv(object):
+    """Convert number base by convert input number base to decimal first,
+    and then convert decimal to require number base
+    Input : num(int) > input number or alphabet A-F
+            base_source > input number base
+            base_target > require number base
+    Output : return converted number base
+    """
     def __init__(self, num, base_source, base_target):
+        """set variable section"""
         self.num = num
         self.base_source = base_source
         self.base_target = base_target
     def any_to_dec(self):
+        """convert from any base to decimal section"""
         self.length = len(self.num)
         self.dec = 0
         for index in range(0, self.length):
@@ -24,6 +38,7 @@ class Baseconv(object):
             index += 1
         return self.dec
     def dec_to_any(self):
+        """Convert decimal to any base section"""
         if type(self.dec) == list:
             self.dec = int("".join(self.dec))
         self.temp = []
@@ -46,7 +61,8 @@ class Baseconv(object):
                 self.temp.append(str(self.result))
         self.any = "".join(self.temp[::-1])
 
-def cal_base_num():
+def ctrl():
+    """control "Baseconv" class section"""
     cls = Baseconv(map(str, raw_input()), input(), input())
     if cls.base_source == cls.base_target:
         return "".join(cls.num)
@@ -61,4 +77,4 @@ def cal_base_num():
         cls.any_to_dec()
         cls.dec_to_any()
         return cls.any
-print cal_base_num()
+print ctrl()
