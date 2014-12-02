@@ -1,5 +1,6 @@
 """Program : Number Base Converter
-Name : Natthawee Chutianusornchai
+Author : Natthawee Chutianusornchai
+         Peeraphon Kunthamyothin
 Language : Python 2.7.8
 """
 
@@ -20,20 +21,10 @@ class Baseconv(object):
         """convert from any base to decimal section"""
         self.length = len(self.num)
         self.dec = 0
+        num_format = "0123456789ABCDEF"
         for index in range(0, self.length):
             self.reverse = self.num[(self.length - 1) - index]
-            if self.reverse == "A":
-                self.reverse = 10
-            elif self.reverse == "B":
-                self.reverse = 11
-            elif self.reverse == "C":
-                self.reverse = 12
-            elif self.reverse == "D":
-                self.reverse = 13
-            elif self.reverse == "E":
-                self.reverse = 14
-            elif self.reverse == "F":
-                self.reverse = 15
+            self.reverse = num_format.index(self.reverse)
             self.dec += int(self.reverse) * (int(self.base_source) ** index)
             index += 1
         return self.dec
@@ -43,22 +34,11 @@ class Baseconv(object):
             self.dec = int("".join(self.dec))
         self.temp = []
         while self.dec > 0:
+            num_format = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, \
+                      "A", "B", "C", "D", "E", "F"]
             self.result = self.dec % self.base_target
             self.dec /= self.base_target
-            if self.result == 10:
-                self.temp.append("A")
-            elif self.result == 11:
-                self.temp.append("B")
-            elif self.result == 12:
-                self.temp.append("C")
-            elif self.result == 13:
-                self.temp.append("D")
-            elif self.result == 14:
-                self.temp.append("E")
-            elif self.result == 15:
-                self.temp.append("F")
-            else:
-                self.temp.append(str(self.result))
+            self.temp.append(str(num_format.pop(self.result)))
         self.any = "".join(self.temp[::-1])
 
 def ctrl():
