@@ -57,4 +57,47 @@ def ctrl():
         cls.any_to_dec()
         cls.dec_to_any()
         return cls.any
-print ctrl()
+def tk_ctrl():
+    """Control Tkinter section"""
+    root = Tk()
+    #base dictionary
+    base = {2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, \
+            10:10, 11:11, 12:12, 13:13, 14:14, 15:15, 16:16}
+    #title
+    root.title("Base Number Converter")
+    #Convert from
+    frame_1 = Frame(root)
+    frame_1.pack()
+    box_1 = LabelFrame(frame_1, text="Convert from", padx=3, pady=3)
+    box_1.pack(side=LEFT)
+    box_1_pack = Entry(box_1)
+    box_1_pack.pack()
+    label_1 = Label(frame_1, text="base")
+    label_1.pack(side=LEFT)
+    var_1 = IntVar(frame_1)
+    base_1 = OptionMenu(frame_1, var_1, *base)
+    var_1.set(10)
+    base_1.pack(side=LEFT)
+    #to
+    frame_2 = Frame(root)
+    frame_2.pack()
+    box_3 = LabelFrame(frame_2, text="to", padx=3, pady=3)
+    box_3.pack(side=LEFT)
+    box_3_pack = Entry(box_3)
+    box_3_pack.pack()
+    label_2 = Label(frame_2, text="base")
+    label_2.pack(side=LEFT)
+    var_2 = IntVar(frame_2)
+    base_2 = OptionMenu(frame_2, var_2, *base)
+    var_2.set(10)
+    base_2.pack(side=LEFT)
+    #calculate
+    frame_3 = Frame(root, bd=5)
+    frame_3.pack()
+    cal = Button(frame_3, text="Calculate")
+    cal.pack()
+    #mainloop
+    root.mainloop()
+from Tkinter import *
+tk_ctrl()
+#print ctrl()
