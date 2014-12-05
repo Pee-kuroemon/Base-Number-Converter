@@ -43,61 +43,71 @@ class Baseconv(object):
 
 def ctrl():
     """control "Baseconv" class section"""
-    cls = Baseconv(map(str, raw_input()), input(), input())
-    if cls.base_source == cls.base_target:
-        return "".join(cls.num)
-    elif cls.base_source == 10:
-        cls.dec = cls.num
-        cls.dec_to_any()
-        return cls.any
-    elif cls.base_target == 10:
-        cls.any_to_dec()
-        return cls.dec
+    cls = Baseconv(map(str, box_1_pack.get()), int(var_1.get()), int(var_2.get()))
+    switch = 1
+    for i in cls.num:
+        condi = '0123456789ABCDEF'
+        if i not in condi[:cls.base_source]:
+            switch = 0
+            break
+    if switch == 0:
+        result = "Please Try again! It's ERROR!"
     else:
-        cls.any_to_dec()
-        cls.dec_to_any()
-        return cls.any
-def tk_ctrl():
-    """Control Tkinter section"""
-    root = Tk()
-    #base dictionary
-    base = {2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, \
-            10:10, 11:11, 12:12, 13:13, 14:14, 15:15, 16:16}
-    #title
-    root.title("Base Number Converter")
-    #Convert from
-    frame_1 = Frame(root)
-    frame_1.pack()
-    box_1 = LabelFrame(frame_1, text="Convert from", padx=3, pady=3)
-    box_1.pack(side=LEFT)
-    box_1_pack = Entry(box_1)
-    box_1_pack.pack()
-    label_1 = Label(frame_1, text="base")
-    label_1.pack(side=LEFT)
-    var_1 = IntVar(frame_1)
-    base_1 = OptionMenu(frame_1, var_1, *base)
-    var_1.set(10)
-    base_1.pack(side=LEFT)
-    #to
-    frame_2 = Frame(root)
-    frame_2.pack()
-    box_3 = LabelFrame(frame_2, text="to", padx=3, pady=3)
-    box_3.pack(side=LEFT)
-    box_3_pack = Entry(box_3)
-    box_3_pack.pack()
-    label_2 = Label(frame_2, text="base")
-    label_2.pack(side=LEFT)
-    var_2 = IntVar(frame_2)
-    base_2 = OptionMenu(frame_2, var_2, *base)
-    var_2.set(10)
-    base_2.pack(side=LEFT)
-    #calculate
-    frame_3 = Frame(root, bd=5)
-    frame_3.pack()
-    cal = Button(frame_3, text="Calculate")
-    cal.pack()
-    #mainloop
-    root.mainloop()
-from Tkinter import *
-tk_ctrl()
+        if cls.base_source == cls.base_target:
+            result = "The Result is " + ("".join(cls.num))
+        elif cls.base_source == 10:
+            cls.dec = cls.num
+            cls.dec_to_any()
+            result = "The Result is " + str(cls.any)
+        elif cls.base_target == 10:
+            cls.any_to_dec()
+            result = "The Result is " + str(cls.dec)
+        else:
+            cls.any_to_dec()
+            cls.dec_to_any()
+            result = "The Result is " + str(cls.any)
+    label.config(text = result)
+
+from Tkinter import *    
+root = Tk()
+#base dictionary
+base = {2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, \
+        10:10, 11:11, 12:12, 13:13, 14:14, 15:15, 16:16}
+#title
+root.title("Base Number Converter")
+#Convert from
+frame_1 = Frame(root)
+frame_1.pack()
+box_1 = LabelFrame(frame_1, text="Input Number", padx=3, pady=3)
+box_1.pack(anchor=CENTER)
+box_1_pack = Entry(box_1, bd = 3, width = 20)
+box_1_pack.pack()
+#change conversion
+frame_2 = Frame(root)
+frame_2.pack()
+label_1 = Label(frame_1, text="From base")
+label_1.pack(side=LEFT)
+var_1 = IntVar(frame_1)
+base_1 = OptionMenu(frame_1, var_1, *base)
+var_1.set(10)
+base_1.pack(side=LEFT)
+label_2 = Label(frame_1, text="to base")
+label_2.pack(side=LEFT)
+var_2 = IntVar(frame_1)
+base_2 = OptionMenu(frame_1, var_2, *base)
+var_2.set(10)
+base_2.pack(side=LEFT)
+#calculate button
+frame_3 = Frame(root, bd=5)
+frame_3.pack()
+cal = Button(frame_3, text="Calculate", command = ctrl)
+cal.pack()
+#result
+frame_4 = Frame(root, bd=5)
+frame_4.pack()
+label = Label(root)
+label.pack()
+#mainloop
+root.mainloop()
+
 #print ctrl()
