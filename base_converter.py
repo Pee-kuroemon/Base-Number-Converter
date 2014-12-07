@@ -43,7 +43,7 @@ class Baseconv(object):
 
 def ctrl():
     """control "Baseconv" class section"""
-    cls = Baseconv(map(str, raw_input()), input(), input())
+    cls = Baseconv(map(str, box_1_pack.get()), int(var_1.get()), int(var_2.get()))
     if cls.base_source == cls.base_target:
         return "".join(cls.num)
     elif cls.base_source == 10:
@@ -68,34 +68,33 @@ def tk_ctrl():
     #Convert from
     frame_1 = Frame(root)
     frame_1.pack()
-    box_1 = LabelFrame(frame_1, text="Convert from", padx=3, pady=3)
-    box_1.pack(side=LEFT)
-    box_1_pack = Entry(box_1)
+    box_1 = LabelFrame(frame_1, text="Input Number", padx=3, pady=3)
+    box_1.pack(anchor=CENTER)
+    box_1_pack = Entry(box_1, bd = 3, width = 10)
     box_1_pack.pack()
-    label_1 = Label(frame_1, text="base")
+    #change conversion
+    frame_2 = Frame(root)
+    frame_2.pack()
+    label_1 = Label(frame_1, text="From base")
     label_1.pack(side=LEFT)
     var_1 = IntVar(frame_1)
     base_1 = OptionMenu(frame_1, var_1, *base)
     var_1.set(10)
     base_1.pack(side=LEFT)
-    #to
-    frame_2 = Frame(root)
-    frame_2.pack()
-    box_3 = LabelFrame(frame_2, text="to", padx=3, pady=3)
-    box_3.pack(side=LEFT)
-    box_3_pack = Entry(box_3)
-    box_3_pack.pack()
-    label_2 = Label(frame_2, text="base")
+    label_2 = Label(frame_2, text="to base")
     label_2.pack(side=LEFT)
     var_2 = IntVar(frame_2)
     base_2 = OptionMenu(frame_2, var_2, *base)
     var_2.set(10)
     base_2.pack(side=LEFT)
-    #calculate
+    #calculate button
     frame_3 = Frame(root, bd=5)
     frame_3.pack()
-    cal = Button(frame_3, text="Calculate")
+    cal = Button(frame_3, text="Calculate", command = ctrl)
     cal.pack()
+    #result
+    frame_4 = Frame(root, bd=5)
+    frame_4.pack()
     #mainloop
     root.mainloop()
 from Tkinter import *
