@@ -113,10 +113,3 @@ label = Label(root, font="times")
 label.pack()
 #mainloop
 root.mainloop()
-
-#print ctrl()
-
-=======
-
-#print ctrl()
->>>>>>> 4b07e54ddc41d8b7ccd398bb20f1695bc02a9ebf
