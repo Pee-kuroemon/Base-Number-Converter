@@ -44,6 +44,7 @@ class Baseconv(object):
 def ctrl():
     """control "Baseconv" class section"""
     cls = Baseconv(map(str, box_1_pack.get()), int(var_1.get()), int(var_2.get()))
+<<<<<<< HEAD
     if cls.base_source == cls.base_target:
         final = "".join(cls.num)
     elif cls.base_source == 10:
@@ -59,6 +60,30 @@ def ctrl():
 <<<<<<< HEAD
         final = cls.any
     result = "The Result is " + str(final)
+=======
+    switch = 1
+    for i in cls.num:
+        condi = '0123456789ABCDEF'
+        if i not in condi[:cls.base_source]:
+            switch = 0
+            break
+    if switch == 0:
+        result = "Please Try again! It's ERROR!"
+    else:
+        if cls.base_source == cls.base_target:
+            result = "The Result is " + ("".join(cls.num))
+        elif cls.base_source == 10:
+            cls.dec = cls.num
+            cls.dec_to_any()
+            result = "The Result is " + str(cls.any)
+        elif cls.base_target == 10:
+            cls.any_to_dec()
+            result = "The Result is " + str(cls.dec)
+        else:
+            cls.any_to_dec()
+            cls.dec_to_any()
+            result = "The Result is " + str(cls.any)
+>>>>>>> 7edb51949ab6f181e1e08dfbffc91c38f0b88b9d
     label.config(text = result)
 
 from Tkinter import *    
@@ -103,6 +128,7 @@ label.pack()
 #mainloop
 root.mainloop()
 
+<<<<<<< HEAD
 =======
         return cls.any
 def tk_ctrl():
@@ -148,4 +174,6 @@ def tk_ctrl():
 from Tkinter import *
 >>>>>>> d88e63d036a10b6c6de0684182fd908c5d135e23
 tk_ctrl()
+=======
+>>>>>>> 7edb51949ab6f181e1e08dfbffc91c38f0b88b9d
 #print ctrl()
