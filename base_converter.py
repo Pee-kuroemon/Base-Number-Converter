@@ -53,19 +53,21 @@ def ctrl():
     if switch == 0:
         result = "Please Try again! It's ERROR!"
     else:
-        if cls.base_source == cls.base_target:
-            result = "The Result is " + ("".join(cls.num))
+        if cls.num == []:
+            result = "Please input number!"
+        elif cls.base_source == cls.base_target:
+            result = "".join(cls.num)
         elif cls.base_source == 10:
             cls.dec = cls.num
             cls.dec_to_any()
-            result = "The Result is " + str(cls.any)
+            result = str(cls.any)
         elif cls.base_target == 10:
             cls.any_to_dec()
-            result = "The Result is " + str(cls.dec)
+            result = str(cls.dec)
         else:
             cls.any_to_dec()
             cls.dec_to_any()
-            result = "The Result is " + str(cls.any)
+            result = str(cls.any)
     label.config(text = result)
 
 from Tkinter import *    
@@ -75,6 +77,7 @@ base = {2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, \
         10:10, 11:11, 12:12, 13:13, 14:14, 15:15, 16:16}
 #title
 root.title("Base Number Converter")
+root.resizable(0, 0)
 #Convert from
 frame_1 = Frame(root)
 frame_1.pack()
