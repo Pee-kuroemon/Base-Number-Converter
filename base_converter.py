@@ -43,19 +43,27 @@ class Baseconv(object):
 
 def ctrl():
     """control "Baseconv" class section"""
-    cls = Baseconv(map(str, box_1_pack.get()), int(var_1.get()), int(var_2.get()))
-    switch = 1
+    cls = Baseconv(map(str, box_1_pack.get()), int(var_1.get()), \
+                   int(var_2.get()))
+    switch = 0
     for i in cls.num:
         condi = '0123456789ABCDEF'
-        if i not in condi[:cls.base_source]:
-            switch = 0
-            break
-    if switch == 0:
-        result = "Please try again! It's ERROR!"
+        if i not in condi:
+            switch = 1
+        elif i not in condi[:cls.base_source]:
+            switch = 2
+    if cls.num == []:
+        result = ""
+        tkMessageBox.showwarning("Warning", "Please input number!")
+    elif switch == 1:
+        result = ""
+        tkMessageBox.showerror("Error", "Please input number 0-9 or \
+alphablet A-F only")
+    elif switch == 2:
+        result = ""
+        tkMessageBox.showerror("Error", "Please input number less than base")
     else:
-        if cls.num == []:
-            result = "Please input number!"
-        elif cls.base_source == cls.base_target:
+        if cls.base_source == cls.base_target:
             result = "".join(cls.num)
         elif cls.base_source == 10:
             cls.dec = cls.num
@@ -70,7 +78,8 @@ def ctrl():
             result = str(cls.any)
     label.config(text = result)
 
-from Tkinter import *    
+from Tkinter import *
+import tkMessageBox
 root = Tk()
 #base dictionary
 base = {2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, \
@@ -81,9 +90,9 @@ root.resizable(0, 0)
 #Convert from
 frame_1 = Frame(root)
 frame_1.pack()
-box_1 = LabelFrame(frame_1, text="Input number here.", padx=3, pady=3)
+box_1 = LabelFrame(frame_1, text="Input number here.", padx=3, pady=3, bd=3)
 box_1.pack(anchor=CENTER)
-box_1_pack = Entry(box_1, bd = 3, width = 30)
+box_1_pack = Entry(box_1, bd=3, width=30)
 box_1_pack.pack()
 #change conversion
 frame_2 = Frame(root)
@@ -103,14 +112,15 @@ base_2.pack(side=LEFT)
 #calculate button
 frame_3 = Frame(root, bd=5)
 frame_3.pack()
-cal = Button(frame_3, text="Calculate!", command = ctrl, bg="LIGHT GREEN", activebackground="LIGHT GREEN")
+cal = Button(frame_3, text="Calculate!", command=ctrl, bg="LIGHT GREEN", \
+             activebackground="LIGHT GREEN")
 cal.pack()
 #result
 frame_4 = Frame(root, bd=5)
 frame_4.pack()
 label_a = LabelFrame(root, text="Result is", padx=3, pady=3, bd=3)
 label_a.pack()
-label = Label(label_a, padx=3, pady=3)
+label = Label(label_a, padx=3, pady=3, justify=LEFT, width=30, wrap=180)
 label.pack()
 #mainloop
 root.mainloop()
