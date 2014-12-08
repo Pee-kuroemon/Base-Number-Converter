@@ -53,19 +53,21 @@ def ctrl():
     if switch == 0:
         result = "Please Try again! It's ERROR!"
     else:
-        if cls.base_source == cls.base_target:
-            result = "The Result is " + ("".join(cls.num))
+        if cls.num == []:
+            result = "Please input number!"
+        elif cls.base_source == cls.base_target:
+            result = "".join(cls.num)
         elif cls.base_source == 10:
             cls.dec = cls.num
             cls.dec_to_any()
-            result = "The Result is " + str(cls.any)
+            result = str(cls.any)
         elif cls.base_target == 10:
             cls.any_to_dec()
-            result = "The Result is " + str(cls.dec)
+            result = str(cls.dec)
         else:
             cls.any_to_dec()
             cls.dec_to_any()
-            result = "The Result is " + str(cls.any)
+            result = str(cls.any)
     label.config(text = result)
 
 from Tkinter import *    
@@ -75,6 +77,7 @@ base = {2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, \
         10:10, 11:11, 12:12, 13:13, 14:14, 15:15, 16:16}
 #title
 root.title("Base Number Converter")
+root.resizable(0, 0)
 #Convert from
 frame_1 = Frame(root)
 frame_1.pack()
@@ -100,14 +103,14 @@ base_2.pack(side=LEFT)
 #calculate button
 frame_3 = Frame(root, bd=5)
 frame_3.pack()
-cal = Button(frame_3, text="Calculate", command = ctrl)
+cal = Button(frame_3, text="Calculate", command = ctrl, bg="LIGHT BLUE")
 cal.pack()
 #result
 frame_4 = Frame(root, bd=5)
 frame_4.pack()
-label_a = LabelFrame(root, text="Result", padx=3, pady=3)
+label_a = LabelFrame(root, text="Result", padx=3, pady=3, bd=3)
 label_a.pack()
-label = Label(label_a)
+label = Label(label_a, padx=3, pady=3, bd=2)
 label.pack()
 #mainloop
 root.mainloop()
