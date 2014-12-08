@@ -103,7 +103,7 @@ base_2.pack(side=LEFT)
 #calculate button
 frame_3 = Frame(root, bd=5)
 frame_3.pack()
-cal = Button(frame_3, text="Calculate", command = ctrl, bg="LIGHT BLUE")
+cal = Button(frame_3, text="Calculate", command = ctrl, bg="LIGHT BLUE", activebackground="LIGHT BLUE")
 cal.pack()
 #result
 frame_4 = Frame(root, bd=5)
