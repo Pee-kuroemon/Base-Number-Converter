@@ -51,7 +51,7 @@ def ctrl():
             switch = 0
             break
     if switch == 0:
-        result = "Please Try again! It's ERROR!"
+        result = "Please try again! It's ERROR!"
     else:
         if cls.num == []:
             result = "Please input number!"
@@ -81,7 +81,7 @@ root.resizable(0, 0)
 #Convert from
 frame_1 = Frame(root)
 frame_1.pack()
-box_1 = LabelFrame(frame_1, text="Input Number", padx=3, pady=3)
+box_1 = LabelFrame(frame_1, text="Input number here.", padx=3, pady=3)
 box_1.pack(anchor=CENTER)
 box_1_pack = Entry(box_1, bd = 3, width = 30)
 box_1_pack.pack()
@@ -103,14 +103,14 @@ base_2.pack(side=LEFT)
 #calculate button
 frame_3 = Frame(root, bd=5)
 frame_3.pack()
-cal = Button(frame_3, text="Calculate", command = ctrl, bg="LIGHT BLUE", activebackground="LIGHT BLUE")
+cal = Button(frame_3, text="Calculate!", command = ctrl, bg="LIGHT GREEN", activebackground="LIGHT GREEN")
 cal.pack()
 #result
 frame_4 = Frame(root, bd=5)
 frame_4.pack()
-label_a = LabelFrame(root, text="Result", padx=3, pady=3, bd=3)
+label_a = LabelFrame(root, text="Result is", padx=3, pady=3, bd=3)
 label_a.pack()
-label = Label(label_a, padx=3, pady=3, bd=2)
+label = Label(label_a, padx=3, pady=3)
 label.pack()
 #mainloop
 root.mainloop()
