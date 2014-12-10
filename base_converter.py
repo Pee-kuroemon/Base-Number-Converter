@@ -1,3 +1,4 @@
+# -*- coding: cp874 -*-
 """Program : Number Base Converter
 Author : Natthawee Chutianusornchai
          Peeraphon Kunthamyothin
@@ -54,14 +55,14 @@ def ctrl():
             switch = 2
     if cls.num == []:
         result = ""
-        tkMessageBox.showwarning("Warning", "Please input number!")
+        tkMessageBox.showwarning("WARNING", "Please input number!")
     elif switch == 1:
         result = ""
-        tkMessageBox.showerror("Error", "Please input number 0-9 or \
-alphablet A-F only")
+        tkMessageBox.showerror("ERROR", "Please input only 0-9 or \
+A-F!")
     elif switch == 2:
         result = ""
-        tkMessageBox.showerror("Error", "Please input number less than base")
+        tkMessageBox.showerror("ERROR", "Please input number less than base!")
     else:
         if cls.base_source == cls.base_target:
             result = "".join(cls.num)
@@ -112,8 +113,8 @@ base_2.pack(side=LEFT)
 #calculate button
 frame_3 = Frame(root, bd=5)
 frame_3.pack()
-cal = Button(frame_3, text="Calculate!", command=ctrl, bg="LIGHT GREEN", \
-             activebackground="LIGHT GREEN")
+cal = Button(frame_3, bd=4, text="Calculate!", bg="green", \
+             activebackground="green", command=ctrl)
 cal.pack()
 #result
 frame_4 = Frame(root, bd=5)
