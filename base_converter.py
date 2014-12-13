@@ -88,6 +88,7 @@ base = {2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, \
 #title
 root.title("Base Number Converter")
 root.resizable(0, 0)
+root.geometry('{}x{}'.format(220, 180))
 #Convert from
 frame_1 = Frame(root)
 frame_1.pack()
